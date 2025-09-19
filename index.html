@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开学计时器</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* 可根据需要去掉 */
+      background: transparent; /* 页面背景透明 */
+    }
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #000000; /* 字体黑色 */
+      background: linear-gradient(135deg, #d9d9d9, #f0f0f0); /* 渐变灰色 */
+      padding: 20px 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px; /* 图标和文字间距 */
+    }
+  </style>
+</head>
+<body>
+  <div class="counter" id="counter">
+    <span id="icon">🎓</span>
+    <span id="text"></span>
+  </div>
+
+  <script>
+    const startDate = new Date("2025-09-01"); // 修改为你的开学日期
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const text = diffDays >= 0
+        ? `已经开学 ${diffDays} 天了！`
+        : `距离开学还有 ${Math.abs(diffDays)} 天！`;
+    document.getElementById("text").innerText = text;
+  </script>
+</body>
+</html>
